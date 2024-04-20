@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<robot name="roscar">
+
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  
+
+  <link name="base_footprint"/>
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.260 0.158 0.004"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="imu_link">
+    <visual>
+      <geometry>
+        <box size="0.085 0.055 0.002"/>
+      </geometry>
+    </visual>	
+  </link>
+
+  <link name="left_front_wheel">
+    <visual>
+      <origin rpy="-1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.035" radius="0.04"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <link name="left_back_wheel">
+    <visual>
+      <origin rpy="-1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.035" radius="0.04"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <link name="right_front_wheel">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.035" radius="0.04"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <link name="right_back_wheel">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.035" radius="0.04"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="footprint_to_base" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.075"/>
+  </joint>
+
+  <joint name="base_to_imu" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin rpy="0 0 -1.57075" xyz="-0.055 0 0.01"/>
+  </joint>
+
+  <joint name="base_to_left_front_wheel" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_front_wheel"/>
+    <origin rpy="0 0 0" xyz="0.093 0.103 -0.04"/>
+  </joint>
+
+  <joint name="base_to_left_back_wheel" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_back_wheel"/>
+    <origin rpy="0 0 0" xyz="-0.093 0.103 -0.04"/>
+  </joint>
+
+  <joint name="base_to_right_front_wheel" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_front_wheel"/>
+    <origin rpy="0 0 0" xyz="0.093 -0.103 -0.04"/>
+  </joint>
+
+  <joint name="base_to_right_back_wheel" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_back_wheel"/>
+    <origin rpy="0 0 0" xyz="-0.093 -0.103 -0.04"/>
+  </joint>
+
+</robot>
